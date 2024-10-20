@@ -1,0 +1,212 @@
+.page-footer {
+    margin-top: -4px;
+}
+
+.page-footer__wrapper {
+    margin: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: $lightgrey;
+    //outline: 5px solid red;
+    //outline-offset: -5px;
+    @media (min-width: $tablet-width) {   
+        display: flex;  
+        justify-content: space-between;   
+        padding-left: 30px;
+        padding-right: 30px;   
+            .line {
+                display: none;
+            }
+       }
+    @media (min-width: $desktop-width) {          
+        padding-left: 110px;
+        padding-right: 110px;  
+    }   
+}
+
+.page-footer__logo2 {
+    text-align: center;
+    @media (min-width: $tablet-width) {           
+            margin-top: 63px;
+            padding-top: 0;
+            padding-left: 0;
+    }
+ @media (min-width: $desktop-width) {          
+    margin-top: 67px;
+ }   
+}
+
+.page-footer__logo2--name img {
+    min-width: 128px;
+    min-height: 24px;
+    margin-top: 39px;
+    margin-bottom: 32px;
+    margin-left: auto;
+    margin-right: auto;
+    &:hover {
+        opacity: 0.8;
+    }
+    &:focus,
+    &:active {
+        opacity: 0.6;
+    }
+    @media (min-width: $tablet-width) {           
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    @media (min-width: $desktop-width) {          
+
+    }   
+}
+
+.page-footer__social {
+    @media (min-width: $tablet-width) {
+        margin-top: 56px;
+        min-height: 94px;
+    }
+    @media (min-width: $desktop-width) {          
+        margin-top: 67px;
+    }   
+}
+
+.social__list {
+    display: grid;
+    width: 130px;
+    grid-template-columns: 23px 16px 10px;
+    gap: 34px;
+    list-style-type: none;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    margin-top: 20px;
+    margin-bottom: 21px;
+    @media (min-width: $tablet-width) {           
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    @media (min-width: $desktop-width) {          
+
+    }   
+}
+
+.social__link {
+    cursor: pointer;
+    &:hover {
+        //filter: rgba(104, 183, 56, 1);
+        filter: hue-rotate(90deg);
+        color: rgba(104, 183, 56, 1);
+    }
+    &:focus,
+    &:active {
+        //filter: rgba(104, 183, 56, 1);
+        filter: hue-rotate(90deg);
+        color: rgba(104, 183, 56, 1);
+        opacity: 0.6;
+        }
+    }
+
+.page-footer__academy {
+    text-decoration: none;
+    text-transform: capitalize;
+    color: var(--special_dark-grey, #444);
+    font-family: Arial;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-right: 22px;
+    &:hover {
+        color: rgba(104, 183, 56, 1);
+    }
+    &:focus,
+    &:active {
+        //filter: rgba(104, 183, 56, 1);
+        filter: hue-rotate(90deg);
+        color: rgba(104, 183, 56, 1);
+        opacity: 0.6;
+        }
+    @media (min-width: $tablet-width) {      
+
+    }
+    @media (min-width: $desktop-width) {          
+      padding-top: 6px;
+    }   
+}
+
+.page-footer__logo {
+    display: flex;
+    cursor: pointer;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-bottom: 32px;
+    
+    @media (min-width: $tablet-width) {           
+            margin-top: 57px;
+            padding: 0;
+            
+    }
+    @media (min-width: $desktop-width) {          
+        padding-bottom: 0;
+        margin-top: 67px;
+        padding-bottom: 0;
+    }   
+    }
+
+    .page-footer__logo {
+        &:hover svg{
+            fill: rgba(104, 183, 56, 1);
+        }
+        &:active svg,
+        &:focus svg{
+            opacity: 0.3;
+            fill: rgba(104, 183, 56, 1);
+        }
+    }
+
+    .page-footer__academy__svg {
+        &:hover {
+            fill: rgba(104, 183, 56, 1);
+        }
+        &:active,
+        &:focus {
+            opacity: 0.3;
+            fill: rgba(104, 183, 56, 1);
+        }
+    }
+
+    .logo-img {
+        cursor: pointer;
+        margin-top: -5px;
+
+        &:hover {
+            filter: hue-rotate(90deg);
+            //filter: rgba(104, 183, 56, 1);
+        }
+        &:active,
+        &:focus {
+            filter: hue-rotate(90deg);
+            //filter: rgba(104, 183, 56, 1);
+    }
+}
+    
+
+    .instagram {
+        @media (min-width: $tablet-width) {
+            width: 23px;
+            height: 23px;
+        }
+    }
+
+    .vkontakte {
+        @media (min-width: $tablet-width) {
+            width: 30px;
+            height: 22px;
+        }
+    }
+
+    .facebook {
+        @media (min-width: $tablet-width) {
+            width: 28px;
+            height: 33px;
+        }
+    }
