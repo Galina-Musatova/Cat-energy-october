@@ -10,6 +10,9 @@ import postcss from 'gulp-postcss';
 import csso from 'postcss-csso';
 import rename from 'gulp-rename';
 import terser from 'gulp-terser';
+import squoosh from 'gulp-libsquoosh';
+import webp from 'gulp-webp';
+import svgstore from 'gulp-svgstore';
 //import {deleteAsync} from 'del';
 
 
@@ -42,17 +45,37 @@ export const html = ()  => {
 // scripts
 
 export const scripts = () => {
-    return gulp.src('source/js/script.js')
+    return gulp.src('source/**/*.js')
         .pipe(terser())
         .pipe(rename('script.min.js'))
-        .pipe(gulp.dest(build.js))
+        .pipe(gulp.dest('build/js'))
 }
 // Images
+export const optimizeImages = () => {
+    return gulp.src('source/**/*.{jpg,png,svg}')
+        .pipe(squoosh())
+        .pipe(gulp.dest('build/img'));
+}
 
+export const copyImages = () => {
+    return gulp.src('source/**/*.{jpg,png,svg}')
+        .pipe(gulp.dest('build/img'));
+}
 //Webr
-
-// Sptite
-
+export const createWebp = () => {
+    return gulp.src("source/img/**/*.{jpg,png}")
+        .pipe(webp({quality: 90}))
+        .pipe(gulp.dest("build/img"))
+}
+// Sprite
+export const sprite = () => {
+    return gulp.src("source/img/**/*.{jpg,png}")
+        .pipe(svgstore({
+            inlineSvg: true
+        }))
+        .pipe(rename("sprite.svg"))
+        .pipe(gulp.dest("build/img"))
+}
 // Server
 
 const server = (done) => {
@@ -76,5 +99,5 @@ const watcher = () => {
 
 
 export default gulp.series(
-  styles, html, scripts, server, watcher
+  styles, html, server, watcher, optimizeImages, copyImages, createWebp, sprite
 );
