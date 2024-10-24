@@ -12,7 +12,8 @@ import rename from 'gulp-rename';
 import terser from 'gulp-terser';
 import squoosh from 'gulp-libsquoosh';
 import webp from 'gulp-webp';
-//import del from 'del';
+
+//import del from 'del'; Нужно!!! Но не получается. Уходит в ошибки
 //import svgstore from 'gulp-svgstore'; Надо добавить для отображения иконки, но выходит в ошибку
 //import {deleteAsync} from 'del';
 
@@ -91,14 +92,14 @@ export const copy = (done) => {
     done();
 }
 
-//Clean
-export const clean = () => {
-    return del("build");    
-}
+//Clean Нужно!!! Но не получается. Уходит в ошибки
+//export const clean = () => {
+   // return del("build");    
+//}
 
 // Server
 
-const server = (done) => {
+export const server = (done) => {
   browser.init({
     server: {
       baseDir: 'build'
@@ -112,11 +113,26 @@ const server = (done) => {
 
 // Watcher
 
-const watcher = () => {
+export const watcher = () => {
   gulp.watch('source/sass/**/*.scss', gulp.series(styles));
+  gulp.watch('source/js/scrirt.js', gulp.series(scripts));
   gulp.watch('source/*.html').on('change', browser.reload);
 }
 
+// Build
+
+export const build = gulp.series(
+    //clean,
+    copy,
+    optimizeImages,
+    gulp.parallel(
+        styles,
+        html,
+        scripts,
+        sprite,
+        createWebp
+    ),
+);
 
 export default gulp.series(
   styles, html, server, watcher, optimizeImages, copyImages, createWebp, copy
