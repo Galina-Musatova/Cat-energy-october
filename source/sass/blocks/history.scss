@@ -318,8 +318,10 @@ outline-offset: -5px;
             border-bottom: none;
         }
     }
-    @media (min-width: $desktop-width) {}
-    line-height: normal;
+    @media (min-width: $desktop-width) {
+        line-height: normal;
+    }
+    
 }
 
 
