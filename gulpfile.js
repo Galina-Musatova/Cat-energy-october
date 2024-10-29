@@ -1,9 +1,10 @@
+import del from 'del';
 import gulp from 'gulp';
 import plumber from 'gulp-plumber';
 import sass from 'gulp-dart-sass';
-
 import autoprefixer from 'autoprefixer';
 import browser from 'browser-sync';
+
 import htmlmin from 'gulp-htmlmin';
 import sourcemap from 'gulp-sourcemaps';
 import postcss from 'gulp-postcss';
@@ -84,6 +85,8 @@ export const copy = (done) => {
         "source/fonts/*.{woff2,woff}",
         "source/*.ico",
         "source/img/*.svg",
+        "source/img/*.png",
+        "source/img/*.jpg",
         "!source/img/icons/*.svg",
     ], {
         base: "source"
@@ -92,10 +95,11 @@ export const copy = (done) => {
     done();
 }
 
-//Clean Нужно!!! Но не получается. Уходит в ошибки
-//export const clean = () => {
-   // return del("build");    
-//}
+//Clean 
+export const clean = () => {
+    return del("build");    
+}
+
 
 // Server
 
@@ -115,7 +119,7 @@ export const server = (done) => {
 
 
 export const watcher = () => {
-    gulp.watch("source/sass/**/*.scss", gulp.series(styles));
+    gulp.watch("source/**/*.scss", gulp.series(styles));
     gulp.watch("source/js/script.js", gulp.series(scripts));
     gulp.watch("*.html", gulp.series(html, reload));
   }
@@ -123,7 +127,7 @@ export const watcher = () => {
 // Build
 
 export const build = gulp.series(
-    //clean,
+    clean,
     copy,
     optimizeImages,
     gulp.parallel(
@@ -134,6 +138,7 @@ export const build = gulp.series(
         createWebp
     ),
 );
+
 
 //exports.default = gulp.series(
     //clean,
@@ -153,5 +158,5 @@ export const build = gulp.series(
 //);
 
 export default gulp.series(
-  styles, html, server, optimizeImages, copyImages, createWebp, copy
+  clean, copy, copyImages, gulp.parallel(styles, html, scripts, sprite, createWebp), gulp.series(server)   
 );
