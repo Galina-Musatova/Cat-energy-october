@@ -14,9 +14,8 @@ import terser from 'gulp-terser';
 import squoosh from 'gulp-libsquoosh';
 import webp from 'gulp-webp';
 
-//import del from 'del'; Нужно!!! Но не получается. Уходит в ошибки
-//import svgstore from 'gulp-svgstore'; Надо добавить для отображения иконки, но выходит в ошибку
-//import {deleteAsync} from 'del';
+//import svgstore from 'gulp-svgstore'; //Надо добавить для отображения иконки, но выходит в ошибку
+
 
 
 
@@ -73,11 +72,12 @@ export const createWebp = () => {
 // Sprite
 export const sprite = () => {
     return gulp.src("source/img/icon-32.svg")
-   //     .pipe(svgstore({inlineSvg: true
-   //})) Надо добавить для отображения иконки, но выходит в ошибку
+        //.pipe(svgstore({inlineSvg: true
+   //})) //Надо добавить для отображения иконки, но выходит в ошибку
         .pipe(rename("sprite.svg"))
         .pipe(gulp.dest("build/img"))
 }
+   
 
 //Copy
 export const copy = (done) => {
